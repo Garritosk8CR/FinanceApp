@@ -1,0 +1,20 @@
+﻿@model FinanceApp.Models.Expense 
+
+<div class="container">
+    <h2 class="mt-4">Add Expense</h2>
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <input asp-for="Description" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Amount" class="form-label"></label>
+            <input asp-for="Amount" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label asp-for="Category" class="form-label"></label>
+            <input asp-for="Category" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
