@@ -23,5 +23,40 @@
                 </tr>
             }
         </tbody>
-</table>
+    </table>
 </div>
+<div>
+    <a asp-action="Create" class="btn btn-primary">Add Expense</a>
+</div>
+<h2>Summary</h2>
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('myChart');
+    var myChart = fetch("/Expenses/GetChart")
+    .then(response => response.json())
+    .then(data => {
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: data.map(d => d.category),
+                datasets: [{
+                    label: 'Expenses',
+                    data: data.map(d => d.total),
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    });
+</script>
+
+
