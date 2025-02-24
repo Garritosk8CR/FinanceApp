@@ -34,5 +34,13 @@ namespace FinanceApp.Data.Service
             _context.Expenses.Remove(expense);
             await _context.SaveChangesAsync();
         }
+        public IQueryable GetChartData()
+        {
+            return _context.Expenses.GroupBy(e => e.Category)
+                .Select(g => new { 
+                    Category = g.Key,
+                    Total = g.Sum(e => e.Amount)
+                });
+        }
     }
 }

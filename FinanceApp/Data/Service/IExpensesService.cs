@@ -9,5 +9,6 @@ namespace FinanceApp.Data.Service
         Task AddExpense(Expense expense);
         Task UpdateExpense(Expense expense);
         Task DeleteExpense(int id);
+        IQueryable GetChartData();
     }
 }
